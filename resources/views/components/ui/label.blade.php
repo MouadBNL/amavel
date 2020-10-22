@@ -1,0 +1,1 @@
+<label for="{{ $for }}" {{ $attributes->merge(['class' => "text-gray-900"]) }}>{{ $label ?? $value ?? $slot }}</label>
