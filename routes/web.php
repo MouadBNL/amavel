@@ -17,6 +17,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::group([
+    'prefix' => 'admin',
+    'as' => 'admin.',
+    'middleware' => ['auth:sanctum']
+], function () {
+
+    Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
+
+    Route::group([
+        'prefix' => 'products',
+        'as' => 'products.'
+    ], function () {
+        
+        Route::view('/', 'admin.products.index')->name('index');
+        Route::view('/create', 'admin.products.create')->name('create');
+
+    });
+});
