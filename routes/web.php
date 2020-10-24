@@ -30,8 +30,10 @@ Route::group([
         'as' => 'products.'
     ], function () {
         
-        Route::view('/', 'admin.products.index')->name('index');
+        Route::get('/', [\App\Http\Controllers\ProductController::class, 'index'])->name('index');
         Route::view('/create', 'admin.products.create')->name('create');
+        Route::post('/', [\App\Http\Controllers\ProductController::class, 'store'])->name('store');
+
 
     });
 });

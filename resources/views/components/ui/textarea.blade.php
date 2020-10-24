@@ -1,1 +1,1 @@
-<textarea {{ $attributes->merge(['class' => "p-2 border rounded shadow bg-white " . (isset($resize) ? $resize : '') , 'cols' => "30",  'rows' => "10"]) }} @if($name) name={{ $name }} @endif></textarea>
+<textarea {{ $attributes->merge(['class' => "p-2 border rounded shadow bg-white " . (isset($resize) ? $resize : '') . ' ' . ($class ?? ''), 'cols' => "30",  'rows' => "10"]) }} @if($name) name={{ $name }} @endif></textarea>
